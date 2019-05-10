@@ -1,0 +1,85 @@
+<!doctype html>
+<html xmlns:th="http://www.springframework.org/schema/mvc">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    
+    <link rel="stylesheet" th:href="@{/static/css/bootstrap.min.css}" />
+    
+    <script type="text/javascript" th:src="@{/static/js/jquery-3.4.0.min.js}"></script>
+    <script type="text/javascript" th:src="@{/static/js/bootstrap.min.js}"></script>
+    
+    
+    <title>Hello Weather Demo</title>
+  </head>
+  <body>
+  <div class="container-fluid">
+  
+    <div class="row">
+      <div class="col-sm-3"></div>
+      <div class="col-sm-4"><h3 class="text-center">Cities Weather consulting</h3></div>
+    </div>
+    <!-- input -->
+    <div class="row">
+      <div class="col-sm-4"></div>
+      <div class="col-sm-4">
+       
+       <form action="#" th:action="@{/weatherCityInfo}" method="post">
+        <div class="form-group">
+          <label for="cities"> Select a City:</label>
+          <select id="cities" class="form-control" name="idCity">
+            <option value="2643743" th:selected="${selectedOption == 2643743} ? 'selected'" >London</option>
+            <option value="1819729" th:selected="${selectedOption == 1819729} ? 'selected'">Hong Kong</option>
+          </select>
+        </div>
+        <div class="row">
+          <button type="submit" class="btn-primary">Get Weather</button>
+        </div>
+        
+       </form>
+       
+      </div>
+    </div>
+    
+    
+    <!-- result -->
+    <div id = "info-result" th:if="${showResult}">
+      <!-- result -->
+      <div class="row">
+    
+        <div class="col-sm-4"></div>
+    
+        <div class="col-sm-4">
+          <div id="weather-info">
+        
+            <div class="row">
+              <span class="label label-default" th:text="'Date: ' + ${date}"></span>
+            </div>
+            <div class="row">
+              <span class="label label-default"  th:text="'City: ' + ${cityName}"></span>
+            </div>
+            <div class="row">
+              <span class="label label-default" th:text="'Weather: ' + ${weather}"></span>
+            </div>
+            <div class="row">
+              <span class="label label-default" th:text="'Temperature Fahrenheit: ' + ${tempFahrenheit}"></span>
+            </div>
+            <div class="row">
+              <span class="label label-default" th:text="'Temperature Celsius: ' + ${tempCelsius}"></span>
+            </div>
+            <div class="row">
+              <span class="label label-default" th:text="'Sunrise: ' + ${sunrise}"></span>
+            </div>
+            <div class="row">
+              <span class="label label-default" th:text="'Sunset: ' + ${sunset}"></span>
+            </div>
+      
+          </div>
+        </div>
+      </div>
+      
+    </div>
+    
+  </div>
+  </body>
+</html>
